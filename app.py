@@ -37,18 +37,23 @@ st.markdown("""
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
+    .stApp {
+        background: white !important;
+    }
+    
     .main {
-        background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+        background: white !important;
         padding: 0;
     }
     
     .block-container {
         padding-top: 2rem !important;
         max-width: 1400px !important;
+        background: white !important;
     }
     
     .stChatMessage {
-        background: white !important;
+        background: white;
         border-radius: 12px;
         padding: 2rem;
         box-shadow: 0 2px 8px rgba(0,0,0,0.06);
@@ -57,8 +62,8 @@ st.markdown("""
     }
     
     .stChatMessage[data-testid="user-message"] {
-        background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%) !important;
-        color: white !important;
+        background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+        color: white;
         border: none;
     }
     
@@ -88,7 +93,7 @@ st.markdown("""
     
     .hero-header {
         background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
-        color: white !important;
+        color: white;
         text-align: center;
         margin: -2rem -1rem 2.5rem -1rem;
         padding: 2.5rem 2rem;
@@ -151,7 +156,7 @@ st.markdown("""
     }
     
     .welcome-card {
-        background: white !important;
+        background: white;
         border-radius: 8px;
         padding: 2rem;
         box-shadow: 0 1px 3px rgba(0,0,0,0.08);

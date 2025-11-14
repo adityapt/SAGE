@@ -26,7 +26,7 @@ st.set_page_config(
     page_title="SAGE - AI MMM Copilot",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="auto"  # Collapses after config complete
 )
 
 st.markdown("""
@@ -38,20 +38,21 @@ st.markdown("""
     }
     
     .main {
-        background: #E8EAED;
+        background: #FFFFFF;
     }
     
     .stChatMessage {
-        background: white;
+        background: #F9FAFB;
         border-radius: 8px;
         padding: 1.75rem;
         box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        border: 1px solid #D1D5DB;
+        border: 1px solid #E5E7EB;
         margin-bottom: 1rem;
     }
     
     .stChatMessage[data-testid="user"] {
-        background: #F8F9FA;
+        background: #F3F4F6;
+        border: 1px solid #D1D5DB;
     }
     
     .stButton>button {
@@ -371,8 +372,16 @@ else:
                 st.error("❌ Failed to initialize copilot. Please check your configuration.")
                 st.stop()
     
-    # Rest of the chat interface code (same as original app.py)
-    # ... (I'll include the essential parts)
+    # Auto-collapse sidebar when configured
+    st.markdown("""
+    <script>
+        const sidebar = window.parent.document.querySelector('[data-testid="stSidebar"]');
+        if (sidebar && sidebar.getAttribute('aria-expanded') === 'true') {
+            const button = window.parent.document.querySelector('[data-testid="collapsedControl"]');
+            if (button) button.click();
+        }
+    </script>
+    """, unsafe_allow_html=True)
     
     st.title("📊 SAGE - AI MMM Copilot")
     

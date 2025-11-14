@@ -37,17 +37,9 @@ st.markdown("""
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
-    /* Force white background everywhere */
-    html, body, [data-testid="stAppViewContainer"], 
-    [data-testid="stApp"], .main, .stApp, 
-    [data-testid="stHeader"], [data-testid="stToolbar"],
-    section[data-testid="stSidebar"] > div,
-    [data-testid="stBottom"],
-    [data-testid="stChatInput"],
-    [data-testid="stChatInputContainer"],
-    .stChatFloatingInputContainer,
-    section[data-testid="stChatFloatingInputContainer"] {
-        background: #FFFFFF !important;
+    .main {
+        background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+        padding: 0;
     }
     
     .block-container {
@@ -134,17 +126,40 @@ st.markdown("""
         line-height: 1.5;
     }
     
+    [data-testid="stMetricValue"] {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #1E293B;
+    }
+    
+    [data-testid="stMetricLabel"] {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #64748B;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+    }
+    
+    .metric-container {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem 1.25rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        border-left: 4px solid #667EEA;
+        height: 100%;
+    }
+    
     .welcome-card {
         background: white;
-        border-radius: 12px;
-        padding: 2.5rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        border: none;
-        margin-bottom: 1.5rem;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        border: 1px solid #E2E8F0;
     }
     
     .welcome-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
         font-weight: 600;
         color: #1E293B;
         margin-bottom: 0.75rem;
@@ -152,7 +167,7 @@ st.markdown("""
     
     .welcome-subtitle {
         color: #64748B;
-        font-size: 1.05rem;
+        font-size: 1rem;
         margin-bottom: 1.5rem;
         line-height: 1.6;
     }
@@ -171,25 +186,6 @@ st.markdown("""
     .example-query:hover {
         background: #EEF2FF;
         border-left-color: #4F46E5;
-    }
-    
-    .stButton>button {
-        border-radius: 6px;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border: 1px solid #D1D5DB;
-        background: white;
-        transition: all 0.2s;
-    }
-    
-    .stButton>button:hover {
-        border-color: #3B82F6;
-        color: #3B82F6;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    
-    .sidebar .stTextInput>div>div>input {
-        border: 2px solid #E5E7EB;
     }
     
     .stSpinner {

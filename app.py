@@ -83,11 +83,23 @@ st.markdown("""
         border: none;
     }
     
+    [data-testid="stBottom"] {
+        background: white !important;
+    }
+    
+    [data-testid="stChatInput"] {
+        background: white !important;
+    }
+    
     .stChatInputContainer {
         background: white !important;
         border-top: 2px solid #E2E8F0 !important;
         padding: 2rem 1rem !important;
         box-shadow: 0 -4px 12px rgba(0,0,0,0.08) !important;
+    }
+    
+    .stChatInputContainer > div {
+        background: white !important;
     }
     
     input {

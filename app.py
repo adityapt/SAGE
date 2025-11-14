@@ -37,17 +37,12 @@ st.markdown("""
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
-    .main {
-        background: #FFFFFF;
-        padding: 0;
-    }
-    
-    .stApp {
-        background: #FFFFFF;
-    }
-    
-    [data-testid="stAppViewContainer"] {
-        background: #FFFFFF;
+    /* Force white background everywhere */
+    html, body, [data-testid="stAppViewContainer"], 
+    [data-testid="stApp"], .main, .stApp, 
+    [data-testid="stHeader"], [data-testid="stToolbar"],
+    section[data-testid="stSidebar"] > div {
+        background: #FFFFFF !important;
     }
     
     .block-container {

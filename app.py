@@ -23,36 +23,147 @@ except ImportError:
 from llm_copilot import MMMCopilot
 
 st.set_page_config(
-    page_title="SAGE - AI MMM Copilot",
+    page_title="SAGE - Strategic AI Marketing Advisor",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="auto"  # Collapses after config complete
+    initial_sidebar_state="collapsed"
 )
 
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     
     * {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
     
     .main {
-        background: #FFFFFF;
+        background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+        padding: 0;
+    }
+    
+    .block-container {
+        padding-top: 2rem !important;
+        max-width: 1400px !important;
     }
     
     .stChatMessage {
-        background: #F9FAFB;
-        border-radius: 8px;
-        padding: 1.75rem;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        border: 1px solid #E5E7EB;
-        margin-bottom: 1rem;
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border: none;
+        margin-bottom: 1.25rem;
     }
     
-    .stChatMessage[data-testid="user"] {
-        background: #F3F4F6;
-        border: 1px solid #D1D5DB;
+    .stChatMessage[data-testid="user-message"] {
+        background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+        color: white;
+        border: none;
+    }
+    
+    .stChatInputContainer {
+        background: white !important;
+        border-top: 2px solid #E2E8F0 !important;
+        padding: 2rem 1rem !important;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.08) !important;
+    }
+    
+    input {
+        border-radius: 8px !important;
+        border: 2px solid #E2E8F0 !important;
+        font-size: 1rem !important;
+        padding: 0.875rem 1.25rem !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    input:focus {
+        border-color: #667EEA !important;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    }
+    
+    h1 {
+        display: none;
+    }
+    
+    .hero-header {
+        background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+        color: white;
+        text-align: center;
+        margin: -2rem -1rem 2.5rem -1rem;
+        padding: 2.5rem 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .hero-title-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .hero-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin: 0;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        font-weight: 400;
+        opacity: 0.9;
+        max-width: 650px;
+        margin: 0 auto;
+        line-height: 1.5;
+    }
+    
+    .welcome-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        border: none;
+        margin-bottom: 1.5rem;
+    }
+    
+    .welcome-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #1E293B;
+        margin-bottom: 0.75rem;
+    }
+    
+    .welcome-subtitle {
+        color: #64748B;
+        font-size: 1.05rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+    
+    .example-query {
+        background: #F8FAFC;
+        border-left: 3px solid #667EEA;
+        padding: 0.875rem 1rem;
+        margin: 0.625rem 0;
+        border-radius: 0 4px 4px 0;
+        font-size: 0.95rem;
+        color: #334155;
+        transition: all 0.2s ease;
+        cursor: default;
+    }
+    
+    .example-query:hover {
+        background: #EEF2FF;
+        border-left-color: #4F46E5;
     }
     
     .stButton>button {
@@ -70,30 +181,12 @@ st.markdown("""
         box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     
-    .stTextInput>div>div>input {
-        border-radius: 6px;
-        border: 1px solid #D1D5DB;
-        padding: 0.75rem;
-    }
-    
-    .success-box {
-        background: #D1FAE5;
-        border: 1px solid #86EFAC;
-        border-radius: 6px;
-        padding: 1rem;
-        margin: 1rem 0;
-    }
-    
-    .warning-box {
-        background: #FEF3C7;
-        border: 1px solid #FCD34D;
-        border-radius: 6px;
-        padding: 1rem;
-        margin: 1rem 0;
-    }
-    
     .sidebar .stTextInput>div>div>input {
         border: 2px solid #E5E7EB;
+    }
+    
+    .stSpinner {
+        color: #667EEA;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -307,50 +400,28 @@ def init_copilot(api_key, data=None):
 config_complete = api_key_input and (uploaded_data is not None or data_source == "Use Sample Data")
 
 if not config_complete:
-    # Show welcome screen
-    st.title("📊 SAGE - AI MMM Copilot")
-    st.markdown("### Welcome! Let's get started.")
-    
+    # Show beautiful hero header
     st.markdown("""
-    **SAGE** is an AI-powered copilot for Marketing Mix Modeling that helps you:
+    <div class="hero-header">
+        <div class="hero-title-container">
+            <span class="hero-title">📊 SAGE</span>
+        </div>
+        <div class="hero-subtitle">Strategic AI-Guided Explorer for Marketing Performance</div>
+    </div>
+    """, unsafe_allow_html=True)
     
-    ✅ Analyze marketing performance with natural language  
-    ✅ Fit response curves automatically  
-    ✅ Optimize budget allocation  
-    ✅ Get expert insights from MMM best practices  
-    
-    ---
-    
-    **To get started:**
-    
-    1. 🔑 **Enter your OpenAI API key** in the sidebar
-    2. 📊 **Upload your data** (CSV) or use sample data
-    3. 💬 **Start asking questions!**
-    
-    """)
-    
-    # Show example queries
-    st.markdown("### 💡 Example Questions")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown("""
-        **Analysis:**
-        - What is TV's ROI?
-        - Show me spend by channel
-        - Compare Search vs Social performance
-        - What are the saturation points?
-        """)
-    
-    with col2:
-        st.markdown("""
-        **Optimization:**
-        - Allocate 100M across channels
-        - What's the optimal budget for TV?
-        - Show me response curves
-        - How should I adjust my spend?
-        """)
+    # Show welcome card with example queries
+    st.markdown("""
+    <div class="welcome-card">
+        <div class="welcome-title">Welcome to SAGE</div>
+        <div class="welcome-subtitle">Your AI-powered marketing advisor. Ask strategic questions in plain English to optimize your media mix.</div>
+        
+        <div class="example-query">What's our best performing channel?</div>
+        <div class="example-query">How should I allocate $50M across channels?</div>
+        <div class="example-query">Show me TV saturation curves</div>
+        <div class="example-query">Which channels should get more budget?</div>
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.info("👈 **Configure your settings in the sidebar to begin!**")
@@ -372,18 +443,15 @@ else:
                 st.error("❌ Failed to initialize copilot. Please check your configuration.")
                 st.stop()
     
-    # Auto-collapse sidebar when configured
+    # Display beautiful hero header
     st.markdown("""
-    <script>
-        const sidebar = window.parent.document.querySelector('[data-testid="stSidebar"]');
-        if (sidebar && sidebar.getAttribute('aria-expanded') === 'true') {
-            const button = window.parent.document.querySelector('[data-testid="collapsedControl"]');
-            if (button) button.click();
-        }
-    </script>
+    <div class="hero-header">
+        <div class="hero-title-container">
+            <span class="hero-title">📊 SAGE</span>
+        </div>
+        <div class="hero-subtitle">Strategic AI-Guided Explorer for Marketing Performance</div>
+    </div>
     """, unsafe_allow_html=True)
-    
-    st.title("📊 SAGE - AI MMM Copilot")
     
     # Display chat history
     for idx, message in enumerate(st.session_state.messages):

@@ -414,17 +414,20 @@ if not config_complete:
     """, unsafe_allow_html=True)
     
     # Show welcome card with example queries  
-    st.html("""
-<div class="welcome-card">
-    <div class="welcome-title">Welcome to SAGE</div>
-    <div class="welcome-subtitle">Your AI-powered marketing advisor. Ask strategic questions in plain English to optimize your media mix.</div>
-    
-    <div class="example-query">What's our best performing channel?</div>
-    <div class="example-query">How should I allocate $50M across channels?</div>
-    <div class="example-query">Show me TV saturation curves</div>
-    <div class="example-query">Which channels should get more budget?</div>
-</div>
-""")
+    if len(st.session_state.messages) == 0:
+        with st.chat_message("assistant"):
+            st.markdown("""
+            <div class="welcome-card">
+                <div class="welcome-title">Welcome to SAGE</div>
+                <div class="welcome-subtitle">
+                    Your AI-powered marketing advisor. Ask strategic questions in plain English to optimize your media mix.
+                </div>
+                <div class="example-query">What's our best performing channel?</div>
+                <div class="example-query">How should I allocate $50M across channels?</div>
+                <div class="example-query">Show me TV saturation curves</div>
+                <div class="example-query">Which channels should get more budget?</div>
+            </div>
+            """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.info("👈 **Configure your settings in the sidebar to begin!**")

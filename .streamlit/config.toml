@@ -1,9 +1,9 @@
 [theme]
-primaryColor = "#3B82F6"
-backgroundColor = "#E8EAED"
-secondaryBackgroundColor = "#FFFFFF"
-textColor = "#1F2937"
-font = "sans serif"
+primaryColor="#667EEA"              # Your brand blue
+backgroundColor="#FFFFFF"           # White main background
+secondaryBackgroundColor="#FFFFFF"  # White for chat input area
+textColor="#1E293B"                 # Dark text color
+font="sans serif"
 
 [server]
 headless = true
@@ -13,4 +13,3 @@ enableXsrfProtection = true
 
 [browser]
 gatherUsageStats = false
-

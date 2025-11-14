@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../deepcausalmmm"
+		},
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "../../../../../marketcdm"
+		},
+		{
+			"path": "../../../../../rapidmmm"
+		},
+		{
+			"path": "../../../../../SAGE"
+		}
+	],
+	"settings": {}
+}

@@ -38,22 +38,21 @@ st.markdown("""
     }
     
     .main {
-        background: #FFFFFF !important;
+        background: #FFFFFF;
         padding: 0;
     }
     
     .stApp {
-        background: #FFFFFF !important;
+        background: #FFFFFF;
     }
     
     [data-testid="stAppViewContainer"] {
-        background: #FFFFFF !important;
+        background: #FFFFFF;
     }
     
     .block-container {
         padding-top: 2rem !important;
         max-width: 1400px !important;
-        background: #FFFFFF !important;
     }
     
     .stChatMessage {
@@ -167,7 +166,6 @@ st.markdown("""
         font-size: 0.95rem;
         color: #334155;
         transition: all 0.2s ease;
-        cursor: default;
     }
     
     .example-query:hover {
@@ -421,14 +419,14 @@ if not config_complete:
     
     # Show welcome card with example queries  
     st.html("""
-<div style="background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 1.5rem;">
-    <h2 style="font-size: 1.75rem; font-weight: 600; color: #1E293B; margin-bottom: 0.75rem;">Welcome to SAGE</h2>
-    <p style="color: #64748B; font-size: 1.05rem; margin-bottom: 1.5rem; line-height: 1.6;">Your AI-powered marketing advisor. Ask strategic questions in plain English to optimize your media mix.</p>
+<div class="welcome-card">
+    <div class="welcome-title">Welcome to SAGE</div>
+    <div class="welcome-subtitle">Your AI-powered marketing advisor. Ask strategic questions in plain English to optimize your media mix.</div>
     
-    <div style="background: #F8FAFC; border-left: 3px solid #667EEA; padding: 0.875rem 1rem; margin: 0.625rem 0; border-radius: 0 4px 4px 0; color: #334155;">What's our best performing channel?</div>
-    <div style="background: #F8FAFC; border-left: 3px solid #667EEA; padding: 0.875rem 1rem; margin: 0.625rem 0; border-radius: 0 4px 4px 0; color: #334155;">How should I allocate $50M across channels?</div>
-    <div style="background: #F8FAFC; border-left: 3px solid #667EEA; padding: 0.875rem 1rem; margin: 0.625rem 0; border-radius: 0 4px 4px 0; color: #334155;">Show me TV saturation curves</div>
-    <div style="background: #F8FAFC; border-left: 3px solid #667EEA; padding: 0.875rem 1rem; margin: 0.625rem 0; border-radius: 0 4px 4px 0; color: #334155;">Which channels should get more budget?</div>
+    <div class="example-query">What's our best performing channel?</div>
+    <div class="example-query">How should I allocate $50M across channels?</div>
+    <div class="example-query">Show me TV saturation curves</div>
+    <div class="example-query">Which channels should get more budget?</div>
 </div>
 """)
     

@@ -41,7 +41,12 @@ st.markdown("""
     html, body, [data-testid="stAppViewContainer"], 
     [data-testid="stApp"], .main, .stApp, 
     [data-testid="stHeader"], [data-testid="stToolbar"],
-    section[data-testid="stSidebar"] > div {
+    section[data-testid="stSidebar"] > div,
+    [data-testid="stBottom"],
+    [data-testid="stChatInput"],
+    [data-testid="stChatInputContainer"],
+    .stChatFloatingInputContainer,
+    section[data-testid="stChatFloatingInputContainer"] {
         background: #FFFFFF !important;
     }
     

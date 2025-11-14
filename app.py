@@ -102,17 +102,29 @@ st.markdown("""
         background: white !important;
     }
     
-    input {
-        border-radius: 8px !important;
-        border: 2px solid #E2E8F0 !important;
-        font-size: 1rem !important;
-        padding: 0.875rem 1.25rem !important;
-        transition: all 0.2s ease !important;
+    /* Chat input styling with gradient border effect */
+    [data-testid="stChatInput"] {
+        border-radius: 50px !important;
+        padding: 3px !important;
+        background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%) !important;
     }
     
-    input:focus {
-        border-color: #667EEA !important;
-        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    [data-testid="stChatInput"] > div {
+        border-radius: 48px !important;
+        background: white !important;
+    }
+    
+    [data-testid="stChatInput"] input {
+        border: none !important;
+        border-radius: 48px !important;
+        font-size: 1rem !important;
+        padding: 0.875rem 1.5rem !important;
+        background: white !important;
+    }
+    
+    [data-testid="stChatInput"] input:focus {
+        outline: none !important;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15) !important;
     }
     
     h1 {

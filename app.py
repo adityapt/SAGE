@@ -414,9 +414,9 @@ if not config_complete:
     """, unsafe_allow_html=True)
     
     # Show welcome card with example queries  
-    if len(st.session_state.messages) == 0:
-        with st.chat_message("assistant"):
-            st.markdown("""
+    
+    with st.chat_message("assistant"):
+        st.markdown("""
             <div class="welcome-card">
                 <div class="welcome-title">Welcome to SAGE</div>
                 <div class="welcome-subtitle">
